@@ -164,34 +164,34 @@ describe('Repositories', () => {
         ])
     })
 
-    // it('[GamesRepository] should be able find a game by entire or partial given title', async () => {
-    //     const result1 = await gamesRepository.findByTitleContaining('of u')
-    //     const result2 = await gamesRepository.findByTitleContaining('eed')
-    //     const result3 = await gamesRepository.findByTitleContaining(
-    //         'rocket league'
-    //     )
+    it('[GamesRepository] should be able find a game by entire or partial given title', async () => {
+        const result1 = await gamesRepository.findByTitleContaining('of u')
+        const result2 = await gamesRepository.findByTitleContaining('eed')
+        const result3 = await gamesRepository.findByTitleContaining(
+            'rocket league'
+        )
 
-    //     expect(result1).toEqual([
-    //         expect.objectContaining({
-    //             title: 'The Last Of Us',
-    //         }),
-    //     ])
+        expect(result1).toEqual([
+            expect.objectContaining({
+                title: 'The Last Of Us',
+            }),
+        ])
 
-    //     expect(result2).toEqual([
-    //         expect.objectContaining({
-    //             title: 'Need For Speed: Most Wanted',
-    //         }),
-    //         expect.objectContaining({
-    //             title: 'Need For Speed: Payback',
-    //         }),
-    //     ])
+        expect(result2).toEqual([
+            expect.objectContaining({
+                title: 'Need For Speed: Most Wanted',
+            }),
+            expect.objectContaining({
+                title: 'Need For Speed: Payback',
+            }),
+        ])
 
-    //     expect(result3).toEqual([
-    //         expect.objectContaining({
-    //             title: 'Rocket League',
-    //         }),
-    //     ])
-    // })
+        expect(result3).toEqual([
+            expect.objectContaining({
+                title: 'Rocket League',
+            }),
+        ])
+    })
 
     // it('[GamesRepository] should be able to get the total count of games', async () => {
     //     const [{ count }] = await gamesRepository.countAllGames()
