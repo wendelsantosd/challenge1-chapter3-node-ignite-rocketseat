@@ -7,6 +7,7 @@ import { IGamesRepository } from '../IGamesRepository';
 
 export class GamesRepository implements IGamesRepository {
   private repository: Repository<Game>;
+  private userRepository: Repository<User>;
 
   constructor() {
     this.repository = getRepository(Game);
@@ -28,17 +29,14 @@ export class GamesRepository implements IGamesRepository {
     `); // Complete usando raw query
   }
 
-  async findUsersByGameId(id: string): Promise<User[]> {
+  async findUsersByGameId(id: string): Promise<User[] | null> {
     const users = await this.repository
       .createQueryBuilder()
-      .leftJoinAndSelect(
-        qb => qb
-        .select('*')
-        .from('users', 'u'),
-        'u'
-      )
-      .where('id = :id', {id})
-      .getRawMany()
+      .select('users')
+      .where('id = :id', { id })
+      .getMany()
+
+      return null
       // Complete usando query builder
   }
 }

@@ -15,6 +15,7 @@ export class UsersRepository implements IUsersRepository {
         user_id,
     }: IFindUserWithGamesDTO): Promise<User | undefined> {
         const user = await this.repository.findOne({
+            relations: ['games'],
             where: { id: user_id },
         })
 
