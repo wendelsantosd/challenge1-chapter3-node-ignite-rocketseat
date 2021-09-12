@@ -13,23 +13,23 @@ import { GamesRepository } from '../modules/games/repositories/implementations/G
 
 const usersSeed: User[] = [
     {
-        first_name: 'Vinicius',
-        last_name: 'Fraga',
+        first_name: 'vinicius',
+        last_name: 'fraga',
         email: 'vinicius.fraga@rocketseat.com.br',
     },
     {
-        first_name: 'Danilo',
-        last_name: 'Vieira',
+        first_name: 'danilo',
+        last_name: 'vieira',
         email: 'danilo.vieira@rocketseat.com.br',
     },
     {
-        first_name: 'Joseph',
-        last_name: 'Oliveira',
+        first_name: 'joseph',
+        last_name: 'oliveira',
         email: 'joseph.oliveira@rocketseat.com.br',
     },
     {
-        first_name: 'Daniele',
-        last_name: 'Leão',
+        first_name: 'daniele',
+        last_name: 'leão',
         email: 'dani.leao@rocketseat.com.br',
     },
 ] as User[]
@@ -100,8 +100,8 @@ describe('Repositories', () => {
         })
 
         expect(user).toMatchObject({
-            first_name: 'Danilo',
-            last_name: 'Vieira',
+            first_name: 'danilo',
+            last_name: 'vieira',
             email: 'danilo.vieira@rocketseat.com.br',
             games: [
                 expect.objectContaining({
@@ -117,52 +117,52 @@ describe('Repositories', () => {
         })
     })
 
-    // it('[UsersRepository] should be able to list users ordered by first name', async () => {
-    //     const users = await usersRepository.findAllUsersOrderedByFirstName()
+    it('[UsersRepository] should be able to list users ordered by first name', async () => {
+        const users = await usersRepository.findAllUsersOrderedByFirstName()
 
-    //     expect(users).toEqual([
-    //         expect.objectContaining({
-    //             first_name: 'Daniele',
-    //         }),
-    //         expect.objectContaining({
-    //             first_name: 'Danilo',
-    //         }),
-    //         expect.objectContaining({
-    //             first_name: 'Joseph',
-    //         }),
-    //         expect.objectContaining({
-    //             first_name: 'Vinicius',
-    //         }),
-    //     ])
-    // })
+        expect(users).toEqual([
+            expect.objectContaining({
+                first_name: 'daniele',
+            }),
+            expect.objectContaining({
+                first_name: 'danilo',
+            }),
+            expect.objectContaining({
+                first_name: 'joseph',
+            }),
+            expect.objectContaining({
+                first_name: 'vinicius',
+            }),
+        ])
+    })
 
-    // it('[UsersRepository] should be able to find user by full name', async () => {
-    //     const result1 = await usersRepository.findUserByFullName({
-    //         first_name: 'VinIcIus',
-    //         last_name: 'fRAga',
-    //     })
+    it('[UsersRepository] should be able to find user by full name', async () => {
+        const result1 = await usersRepository.findUserByFullName({
+            first_name: 'VinIcIus',
+            last_name: 'FRAga',
+        })
 
-    //     const result2 = await usersRepository.findUserByFullName({
-    //         first_name: 'Danilo',
-    //         last_name: 'Vieira',
-    //     })
+        const result2 = await usersRepository.findUserByFullName({
+            first_name: 'Danilo',
+            last_name: 'Vieira',
+        })
 
-    //     expect(result1).toEqual([
-    //         expect.objectContaining({
-    //             first_name: 'Vinicius',
-    //             last_name: 'Fraga',
-    //             email: 'vinicius.fraga@rocketseat.com.br',
-    //         }),
-    //     ])
+        expect(result1).toEqual([
+            expect.objectContaining({
+                first_name: 'vinicius',
+                last_name: 'fraga',
+                email: 'vinicius.fraga@rocketseat.com.br',
+            }),
+        ])
 
-    //     expect(result2).toEqual([
-    //         expect.objectContaining({
-    //             first_name: 'Danilo',
-    //             last_name: 'Vieira',
-    //             email: 'danilo.vieira@rocketseat.com.br',
-    //         }),
-    //     ])
-    // })
+        expect(result2).toEqual([
+            expect.objectContaining({
+                first_name: 'danilo',
+                last_name: 'vieira',
+                email: 'danilo.vieira@rocketseat.com.br',
+            }),
+        ])
+    })
 
     // it('[GamesRepository] should be able find a game by entire or partial given title', async () => {
     //     const result1 = await gamesRepository.findByTitleContaining('of u')
